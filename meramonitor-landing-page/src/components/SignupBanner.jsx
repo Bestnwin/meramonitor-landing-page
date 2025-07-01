@@ -3,7 +3,7 @@ import React from 'react';
 export default function SignupBanner() {
   return (
     <section className="bg-[#f9f7fc] py-12">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="bg-gradient-to-r from-[#8b2fff] to-[#1e70ff] rounded-[2rem] shadow-xl px-6 py-12 md:px-12 md:py-16 flex flex-col lg:flex-row justify-between items-center gap-8">
           {/* Left Text Section */}
           <div className="text-white lg:max-w-[50%]">
@@ -16,31 +16,33 @@ export default function SignupBanner() {
             </p>
           </div>
 
-          {/* Right Form Section */}
-          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-md">
-            <p className="text-[#6B47ED] font-semibold mb-4 text-center text-lg">
+          {/* Right Form Section - No container box around the form */}
+          {/* I've removed the <div> with bg-white, rounded-2xl, etc. */}
+          <div className="w-full max-w-sm text-center"> {/* Added text-center for the "Instant Signup" and adjusted positioning */}
+            <p className="text-white font-semibold mb-4 text-lg"> {/* Changed text color to white for visibility on gradient */}
               ⚡ Instant Signup ⚡
             </p>
             <form className="space-y-3">
               <input
                 type="text"
                 placeholder="Full Name"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6B47ED]"
+                // Adjusted background and border for visibility on gradient
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-0 bg-white bg-opacity-90 text-gray-800 placeholder-gray-500"
               />
               <input
                 type="email"
                 placeholder="Work Email"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6B47ED]"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-0 bg-white bg-opacity-90 text-gray-800 placeholder-gray-500"
               />
               <input
                 type="tel"
                 placeholder="Phone Number"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6B47ED]"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-0 bg-white bg-opacity-90 text-gray-800 placeholder-gray-500"
               />
               <input
                 type="text"
                 placeholder="Business Name"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6B47ED]"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-0 bg-white bg-opacity-90 text-gray-800 placeholder-gray-500"
               />
               <button
                 type="submit"
