@@ -1,7 +1,21 @@
 import React from 'react';
-import google from '/home/kshit/meramonitor/landing_page/meramonitor-landing-page/public/images/google.png'
 
 export default function Landing() {
+  const reviews = [
+    {
+      name: 'Google Reviews',
+      logo: '/images/google.png',
+    },
+    {
+      name: 'Product Hunt',
+      logo: '/images/ProductHunt.png',
+    },
+    {
+      name: 'Software Suggest',
+      logo: '/images/SoftwareSuggest.png',
+    },
+  ];
+
   return (
     <section className="bg-gradient-to-r from-purple-600 to-blue-500 text-white py-12 px-4">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -13,37 +27,30 @@ export default function Landing() {
           </h1>
           <p className="text-yellow-300 font-semibold uppercase">Track. Analyze. Grow.</p>
           <ul className="space-y-2 text-lg">
-            <li>
-              ✅ Track 100% employee activities & get reports
-            </li>
-            <li>
-              ✅ Say Goodbye to fake keystrokes & clicks
-            </li>
-            <li>
-              ✅ Watch & Record Live Employee Screen
-            </li>
-            <li>
-              ✅ Automated Screenshots every minute
-            </li>
-            <li>
-              ✅ Actionable AI Reports & Dashboards
-            </li>
+            <li>✅ Track 100% employee activities & get reports</li>
+            <li>✅ Say Goodbye to fake keystrokes & clicks</li>
+            <li>✅ Watch & Record Live Employee Screen</li>
+            <li>✅ Automated Screenshots every minute</li>
+            <li>✅ Actionable AI Reports & Dashboards</li>
             <li>
               ✅ <span className="line-through">₹399/m</span> ₹99/m only (<span className="text-green-400">75% off—limited time</span>)
             </li>
           </ul>
 
-          {/* Ratings */}
-          <div className="flex gap-4 pt-4">
-            {['Google Reviews', 'Product Hunt', 'Software Suggest'].map((platform) => (
+          {/* Smaller Reviews with logos */}
+          <div className="flex gap-3 pt-6 flex-wrap">
+            {reviews.map((platform) => (
               <div
-                key={platform}
-                className="bg-indigo-700 rounded-lg px-4 py-2 text-center"
+                key={platform.name}
+                className="bg-indigo-700 rounded-2xl px-2 py-2 text-center flex flex-col items-center w-28 bg-indigo-700/80"
               >
-                <p className="font-semibold">{platform}</p>
-                <p>
-                  {'⭐'.repeat(5)}
-                </p>
+                <img
+                  src={platform.logo}
+                  alt={platform.name}
+                  className="w-8 h-8 object-contain mb-1"
+                />
+                <p className="text-xs font-semibold">{platform.name}</p>
+                <p className="text-sm">{'⭐'.repeat(5)}</p>
               </div>
             ))}
           </div>
@@ -76,7 +83,7 @@ export default function Landing() {
             <input
               type="text"
               placeholder="Business Name"
-              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 "
             />
             <button
               type="submit"

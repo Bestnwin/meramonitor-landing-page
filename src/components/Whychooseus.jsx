@@ -58,7 +58,7 @@ export default function IndustryAdaptabilitySection() {
           {industryData.map((item, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-56"
+              className="relative bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-75"
             >
               <img
                 src={item.imageSrc}
@@ -67,7 +67,7 @@ export default function IndustryAdaptabilitySection() {
               />
 
               <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black via-black/70 to-transparent text-white text-base font-semibold">
-                {item.title}
+                
               </div>
             </div>
           ))}
