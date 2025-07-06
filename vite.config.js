@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/landing-page",
+  base: "/meramonitor-landing-page/", // <-- This should be your GitHub repository name
 })
