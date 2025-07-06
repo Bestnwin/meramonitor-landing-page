@@ -1,12 +1,12 @@
 import React from 'react';
 
-// ✅ Image imports removed — use empty strings instead
-const startTrialImage = "";
-const downloadSoftwareImage = "";
-const startTrackingImage = "";
-const windowsIcon = "";
-const macIcon = "";
-const linuxIcon = "";
+// ✅ Correct public-relative paths
+const startTrialImage = "/images/Launch.png";
+const downloadSoftwareImage = "/images/Login.png";
+const startTrackingImage = "/images/Finance.png";
+const windowsIcon = "/images/f6ae5a_391fe3940fd34723928d2a33446f1dec~mv2.png";
+const macIcon = "/images/mac.png";
+const linuxIcon = "/images/linux.png";
 
 const FeatureSection = () => {
   return (
@@ -21,7 +21,7 @@ const FeatureSection = () => {
       <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-4">
         {/* Step 1 */}
         <div className="flex flex-col items-center p-4 my-2 rounded-lg text-center w-full md:w-1/3 max-w-sm">
-          <div className="w-48 h-48 mb-4 bg-gray-200 flex items-center justify-center">
+          <div className="w-48 h-48 mb-4 flex items-center justify-center">
             <img src={startTrialImage} alt="Start Your Free Trial" className="w-full h-full object-contain" />
           </div>
           <h3 className="text-xl font-semibold text-purple-800 mb-2">Step 1 <br /> Start Your Free Trial</h3>
@@ -32,7 +32,7 @@ const FeatureSection = () => {
 
         {/* Step 2 */}
         <div className="flex flex-col items-center p-4 my-2 rounded-lg text-center w-full md:w-1/3 max-w-sm">
-          <div className="w-48 h-48 mb-4 bg-gray-200 flex items-center justify-center">
+          <div className="w-48 h-48 mb-4 flex items-center justify-center">
             <img src={downloadSoftwareImage} alt="Download The Software" className="w-full h-full object-contain" />
           </div>
           <h3 className="text-xl font-semibold text-purple-800 mb-2">Step 2 <br /> Download The Software</h3>
@@ -43,7 +43,7 @@ const FeatureSection = () => {
 
         {/* Step 3 */}
         <div className="flex flex-col items-center p-4 my-2 rounded-lg text-center w-full md:w-1/3 max-w-sm">
-          <div className="w-48 h-48 mb-4 bg-gray-200 flex items-center justify-center">
+          <div className="w-48 h-48 mb-4 flex items-center justify-center">
             <img src={startTrackingImage} alt="Start Employee Tracking" className="w-full h-full object-contain" />
           </div>
           <h3 className="text-xl font-semibold text-purple-800 mb-2">Step 3 <br /> Start Employee Tracking</h3>
@@ -63,24 +63,24 @@ const FeatureSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-12">
           {/* Windows */}
           <div className="flex flex-col items-center m-4">
-            <img src={windowsIcon} alt="Windows" className="w-24 h-24 object-contain mb-2 bg-gray-200" />
+            <img src={windowsIcon} alt="Windows" className="w-24 h-24 object-contain mb-2" />
             <span className="text-lg text-gray-700">Windows</span>
           </div>
 
           {/* Mac */}
           <div className="flex flex-col items-center m-4">
-            <img src={macIcon} alt="Mac" className="w-24 h-24 object-contain mb-2 bg-gray-200" />
+            <img src={macIcon} alt="Mac" className="w-24 h-24 object-contain mb-2" />
             <span className="text-lg text-gray-700">Mac</span>
           </div>
 
           {/* Linux */}
           <div className="flex flex-col items-center m-4">
-            <img src={linuxIcon} alt="Linux" className="w-24 h-24 object-contain mb-2 bg-gray-200" />
+            <img src={linuxIcon} alt="Linux" className="w-24 h-24 object-contain mb-2" />
             <span className="text-lg text-gray-700">Linux</span>
           </div>
         </div>
 
-        {/* Sign Up & Download button placeholder */}
+        {/* Sign Up & Download button */}
         <button
           className="mt-12 px-10 py-4 text-white text-xl font-semibold rounded-full
                      bg-gradient-to-r from-purple-600 to-indigo-600

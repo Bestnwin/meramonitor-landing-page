@@ -9,17 +9,20 @@ export default function DemoPage() {
   const stats = [
     {
       title: "96% More Productivity",
-      description: "Boost your Team's productivity by upto 96% with Advanced Employee Monitoring Software."
+      description: "Boost your Team's productivity by up to 96% with Advanced Employee Monitoring Software."
     },
     {
       title: "40% More Profitability",
-      description: "Streamline Employee Monitoring and increase profits by upto 40%. Get the highest ROI."
+      description: "Streamline Employee Monitoring and increase profits by up to 40%. Get the highest ROI."
     },
     {
       title: "100% Transparency",
       description: "Get 100% Transparency with Accurate Employee Computer Tracking & actionable reports."
     }
   ];
+
+  // ✅ Use a simple, clean image name — place it in /public/images/
+  const demoImage = "/images/demo.png"; // <- Rename your file to this!
 
   return (
     <section className="bg-[#f9f7fc] py-12">
@@ -29,13 +32,13 @@ export default function DemoPage() {
         </h2>
 
         <div
-          onClick={() => console.log('Video play clicked')} // You can replace this later
-          className="relative mt-10 cursor-pointer group"
+          onClick={() => console.log('Video play clicked')}
+          className="relative mt-10 cursor-pointer group max-w-3xl mx-auto"
         >
           <img
-            src="/assets/demo-thumbnail.png" // Replace with your actual thumbnail
-            alt="Live Demo"
-            className="mx-auto max-w-full rounded-lg shadow-lg"
+            src={demoImage}
+            alt="Live Demo Thumbnail"
+           
           />
           <div className="absolute inset-0 flex justify-center items-center">
             <div className="bg-red-600 text-white p-4 rounded-full shadow-md transition-transform duration-300 group-hover:scale-110">
