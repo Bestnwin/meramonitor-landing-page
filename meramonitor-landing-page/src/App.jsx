@@ -44,6 +44,7 @@ function App() {
       <SignupBanner />
       <FeatureSlider />
       <WhyChooseUsSection />
+      <FeatureSection />
       <FAQSection />
       <Footer />
       <main className="p-4">
