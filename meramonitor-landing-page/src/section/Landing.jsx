@@ -1,4 +1,5 @@
 import React from 'react';
+import google from '/home/kshit/meramonitor/landing_page/meramonitor-landing-page/public/images/google.png'
 
 export default function Landing() {
   return (
