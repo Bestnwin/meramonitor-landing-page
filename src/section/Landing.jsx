@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+// 👉 Import your function from another file
+import { submitFreeTrial } from "../components/storing.jsx";
 
 export default function Landing() {
   const reviews = [
@@ -15,6 +17,41 @@ export default function Landing() {
       logo: 'images/SoftwareSuggest.png',
     },
   ];
+
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    business: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Submitting:', formData);
+
+    try {
+      const res = await submitFreeTrial(formData);
+      console.log('API Response:', res);
+      // ✅ Show success message, clear form, close modal, etc.
+      alert('Submitted successfully!');
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        business: '',
+      });
+    } catch (err) {
+      console.error('Submission error:', err);
+    }
+  };
 
   return (
     <section className="bg-gradient-to-r from-purple-600 to-blue-500 text-white py-12 px-4">
@@ -33,7 +70,8 @@ export default function Landing() {
             <li>✅ Automated Screenshots every minute</li>
             <li>✅ Actionable AI Reports & Dashboards</li>
             <li>
-              ✅ <span className="line-through">₹399/m</span> ₹99/m only (<span className="text-green-400">75% off—limited time</span>)
+              ✅ <span className="line-through">₹399/m</span> ₹99/m only (
+              <span className="text-green-400">75% off—limited time</span>)
             </li>
           </ul>
 
@@ -64,26 +102,40 @@ export default function Landing() {
           <p className="text-sm text-center mb-6 text-gray-600">
             Get started in just 3 clicks
           </p>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="text"
+              name="fullName"
               placeholder="Full Name"
+              value={formData.fullName}
+              onChange={handleChange}
+              required
               className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="email"
+              name="email"
               placeholder="Work Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
               className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="tel"
+              name="phone"
               placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="text"
+              name="business"
               placeholder="Business Name"
-              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 "
+              value={formData.business}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
               type="submit"
