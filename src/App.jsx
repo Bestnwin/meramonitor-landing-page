@@ -47,9 +47,6 @@ function App() {
       <FeatureSection />
       <FAQSection />
       <Footer />
-      <main className="p-4">
-        <h2 className="text-2xl font-bold">Landing Page Content</h2>
-      </main>
     </div>
   );
 }

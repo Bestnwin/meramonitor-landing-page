@@ -22,7 +22,7 @@ export default function DemoPage() {
   ];
 
   // ✅ Use a simple, clean image name — place it in /public/images/
-  const demoImage = "/images/demo.png"; // <- Rename your file to this!
+  const demoImage = "images/demo.png"; // <- Rename your file to this!
 
   return (
     <section className="bg-[#f9f7fc] py-12">

@@ -1,12 +1,12 @@
 import React from 'react';
 
 // ✅ Correct public-relative paths
-const startTrialImage = "/images/Launch.png";
-const downloadSoftwareImage = "/images/Login.png";
-const startTrackingImage = "/images/Finance.png";
-const windowsIcon = "/images/f6ae5a_391fe3940fd34723928d2a33446f1dec~mv2.png";
-const macIcon = "/images/mac.png";
-const linuxIcon = "/images/linux.png";
+const startTrialImage = "images/Launch.png";
+const downloadSoftwareImage = "images/Login.png";
+const startTrackingImage = "images/Finance.png";
+const windowsIcon = "images/f6ae5a_391fe3940fd34723928d2a33446f1dec~mv2.png";
+const macIcon = "images/mac.png";
+const linuxIcon = "images/linux.png";
 
 const FeatureSection = () => {
   return (

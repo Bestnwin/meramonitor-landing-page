@@ -3,42 +3,42 @@ import React from 'react';
 const industryData = [
   {
     title: "Legal Team",
-    imageSrc: "/images/1.png",
+    imageSrc: "images/1.png",
     imageAlt: "A legal team collaborating around a desk."
   },
   {
     title: "Software Development",
-    imageSrc: "/images/2.png",
+    imageSrc: "images/2.png",
     imageAlt: "Software developers working together on laptops."
   },
   {
     title: "E-commerce",
-    imageSrc: "/images/3.png",
+    imageSrc: "images/3.png",
     imageAlt: "People discussing e-commerce strategies."
   },
   {
     title: "Real Estate",
-    imageSrc: "/images/4.png",
+    imageSrc: "images/4.png",
     imageAlt: "Real estate agents showing a property to clients."
   },
   {
     title: "Consulting",
-    imageSrc: "/images/5.png",
+    imageSrc: "images/5.png",
     imageAlt: "Consultants reviewing documents and discussing."
   },
   {
     title: "Marketing Agency",
-    imageSrc: "/images/6.png",
+    imageSrc: "images/6.png",
     imageAlt: "Marketing professionals brainstorming ideas."
   },
   {
     title: "Financial Tech",
-    imageSrc: "/images/FinancialTech.png",
+    imageSrc: "images/FinancialTech.png",
     imageAlt: "Finance professionals analyzing data on multiple screens."
   },
   {
     title: "Health-Tech",
-    imageSrc: "/images/HealthTech.png",
+    imageSrc: "images/HealthTech.png",
     imageAlt: "Medical professionals working with technology."
   },
 ];

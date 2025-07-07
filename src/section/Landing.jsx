@@ -4,15 +4,15 @@ export default function Landing() {
   const reviews = [
     {
       name: 'Google Reviews',
-      logo: '/images/google.png',
+      logo: 'images/googleLogo.png',
     },
     {
       name: 'Product Hunt',
-      logo: '/images/ProductHunt.png',
+      logo: 'images/ProductHunt.png',
     },
     {
       name: 'Software Suggest',
-      logo: '/images/SoftwareSuggest.png',
+      logo: 'images/SoftwareSuggest.png',
     },
   ];
 
