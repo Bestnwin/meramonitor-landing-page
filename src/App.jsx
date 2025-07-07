@@ -11,7 +11,8 @@ import FeatureSlider from './components/FeatureSlide';
 import FAQSection from './components/faq';
 import Footer from './components/footer';
 import WhyChooseUsSection from './components/Whychooseus';
-import FeatureSection from './components/download'; // not used below — remove if unused
+import FeatureSection from './components/download';
+import Testimonials from './components/Testimonial';
 
 function App() {
   useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
       <SignupBanner />
       <FeatureSlider />
       <WhyChooseUsSection />
+      <Testimonials />
       <FeatureSection />
       <FAQSection />
       <Footer />
