@@ -51,19 +51,20 @@ function App() {
       <Navbar onOpenFormModal={openModal} />
 
       {/* Render the FormModal, controlled by showFormModal state */}
-      <FormModal isOpen={showFormModal} onClose={closeModal} />
+      
       <Landing />
       <SponsorList />
-      <DemoPage />
+      <DemoPage onOpenFormModal={openModal} />
       <SignupBanner />
-      <PricingFeaturesSection />
+      <PricingFeaturesSection onOpenFormModal={openModal} />
       <SignupBanner />
       <FeatureSlider />
       <WhyChooseUsSection />
       <Testimonials />
-      <FeatureSection />
+      <FeatureSection onOpenFormModal={openModal} />
       <FAQSection />
       <Footer />
+      <FormModal isOpen={showFormModal} onClose={closeModal} />
     </div>
   );
 }

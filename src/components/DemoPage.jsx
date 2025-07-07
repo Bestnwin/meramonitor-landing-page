@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DemoPage() {
+export default function DemoPage({ onOpenFormModal }) {
   const heading = {
     titleHighlight: "Watch Live Demo",
     titleRest: "Employee Monitoring Software"
@@ -21,8 +21,7 @@ export default function DemoPage() {
     }
   ];
 
-  // ✅ Use a simple, clean image name — place it in /public/images/
-  const demoImage = "images/demo.png"; // <- Rename your file to this!
+  const demoImage = "images/demo.png";
 
   return (
     <section className="bg-[#f9f7fc] py-12">
@@ -32,13 +31,12 @@ export default function DemoPage() {
         </h2>
 
         <div
-          onClick={() => console.log('Video play clicked')}
+          onClick={onOpenFormModal}  // ✅ Use the prop instead of console.log
           className="relative mt-10 cursor-pointer group max-w-3xl mx-auto"
         >
           <img
             src={demoImage}
             alt="Live Demo Thumbnail"
-           
           />
           <div className="absolute inset-0 flex justify-center items-center">
             <div className="bg-red-600 text-white p-4 rounded-full shadow-md transition-transform duration-300 group-hover:scale-110">
@@ -48,6 +46,14 @@ export default function DemoPage() {
             </div>
           </div>
         </div>
+
+        {/* OR, add a separate button below */}
+        <button
+          onClick={onOpenFormModal}
+          className="mt-6 px-6 py-3 bg-gradient-to-r from-purple-700 to-blue-600 text-white rounded-lg text-sm font-medium hover:from-purple-800 hover:to-blue-700 transition duration-300"
+        >
+          Get Started & Get Free Gift Card
+        </button>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
