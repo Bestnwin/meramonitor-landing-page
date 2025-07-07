@@ -1,140 +1,152 @@
-import React, { useState } from "react";
-import axios from "axios";
+// src/FormModal.js
+import React, { useState, useEffect } from 'react';
 
-export default function RegisterModal() {
-  const [isOpen, setIsOpen] = useState(false);
+// Adjust the path if needed
+import meraMonitorLogo from '/images/MeraMonitor.png';
+
+function FormModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    termsAgreed: false,
+    fullName: '',
+    workEmail: '',
+    phoneNumber: '',
+    businessName: '',
   });
 
+  const [animateIn, setAnimateIn] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        setAnimateIn(true);
+      }, 10);
+      return () => clearTimeout(timer);
+    } else {
+      setAnimateIn(false);
+    }
+  }, [isOpen]);
+
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!formData.termsAgreed) {
-      alert("Please agree to the terms of service.");
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        "https://api.sheetbest.com/sheets/b1a77210-f5a8-40c0-a052-7646be845329",
-        {
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }
-      );
-      console.log("Form submitted:", response.data);
-      alert("Registration successful!");
-      setIsOpen(false);
-    } catch (error) {
-      console.error("Submission error:", error);
-      alert("Failed to register.");
-    }
+    console.log('Form Submitted:', formData);
+    alert('Thank you for signing up for the free trial!');
+    setFormData({
+      fullName: '',
+      workEmail: '',
+      phoneNumber: '',
+      businessName: '',
+    });
+    onClose();
   };
 
+  if (!isOpen && !animateIn) {
+    return null;
+  }
+
   return (
-    <>
-      {/* ✅ This button OPENS the modal */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
-      >
-        Open Register Modal
-      </button>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+      {/* Transparent Dark Layer */}
+      <div
+        className={`absolute inset-0 bg-black transition-opacity duration-300 ${animateIn ? 'opacity-50' : 'opacity-0'}`}
+        onClick={onClose} // Click outside to close
+      ></div>
 
-      {/* ✅ The Modal */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-8">
-          <div className="relative w-full max-w-md bg-white rounded-2xl p-8 shadow-2xl">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold"
-            >
-              ✖
-            </button>
+      {/* Modal Content */}
+      <div className={`
+        relative z-10
+        bg-gradient-to-br from-purple-500 via-purple-600 to-indigo-500
+        p-8 rounded-xl shadow-2xl w-11/12 max-w-md
+        transform transition-all duration-300 ease-out
+        ${animateIn ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}
+        overflow-y-auto max-h-[90vh]
+      `}>
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-white text-3xl font-light hover:text-gray-300 focus:outline-none"
+        >
+          &times;
+        </button>
 
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-              Create an Account
-            </h2>
-
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-300 outline-none"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-300 outline-none"
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-300 outline-none"
-              />
-              <input
-                type="password"
-                name="confirmPassword"
-                placeholder="Repeat your password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-300 outline-none"
-              />
-
-              <div className="flex items-center text-sm text-gray-600">
-                <input
-                  type="checkbox"
-                  name="termsAgreed"
-                  checked={formData.termsAgreed}
-                  onChange={handleChange}
-                  className="mr-2"
-                />
-                I agree all statements in&nbsp;
-                <a href="#" className="text-purple-600 font-semibold underline">
-                  Terms of service
-                </a>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-green-400 to-blue-400 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition"
-              >
-                Register
-              </button>
-
-              <p className="text-center text-sm text-gray-600 mt-4">
-                Already have an account?&nbsp;
-                <a href="#" className="text-purple-700 font-medium underline">
-                  Login here
-                </a>
-              </p>
-            </form>
-          </div>
+        {/* Form Header */}
+        <div className="text-center mb-6">
+          <img
+            src={meraMonitorLogo}
+            alt="MeraMonitor Logo"
+            className="h-16 w-auto mx-auto mb-4"
+          />
+          <h2 className="text-white text-3xl font-bold mb-2">30 Days Free Trial</h2>
+          <p className="text-purple-200 text-sm mb-3">Please Fill In Your Details To Continue – Limited Time Offer!</p>
+          <p className="text-yellow-400 text-lg font-semibold animate-pulse">✨ Instant Signup ✨</p>
         </div>
-      )}
-    </>
+
+        {/* Form Body */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              value={formData.fullName}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-lg bg-white bg-opacity-90 text-gray-800 placeholder-gray-500 border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200"
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              name="workEmail"
+              placeholder="Work Email"
+              value={formData.workEmail}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-lg bg-white bg-opacity-90 text-gray-800 placeholder-gray-500 border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200"
+            />
+          </div>
+          <div>
+            <input
+              type="tel"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-lg bg-white bg-opacity-90 text-gray-800 placeholder-gray-500 border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="businessName"
+              placeholder="Business Name"
+              value={formData.businessName}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-lg bg-white bg-opacity-90 text-gray-800 placeholder-gray-500 border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200"
+            />
+          </div>
+          <button
+            type="submit"
+            className="
+              w-full p-3 rounded-lg text-lg font-semibold
+              bg-yellow-500 text-purple-900
+              hover:bg-yellow-400 transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-purple-800
+            "
+          >
+            Start Free Trial
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
+
+export default FormModal;

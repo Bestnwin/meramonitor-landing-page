@@ -1,3 +1,4 @@
+// Navbar.js
 import React from 'react';
 
 // Ensure these paths correctly point to your images
@@ -5,7 +6,8 @@ import React from 'react';
 import meraMonitorLogo from '/images/MeraMonitor.png';
 import amazonGiftCardLogo from '/images/amazon.png'; // Make sure the file name is 'amazon.png'
 
-export default function Navbar() {
+// Accept onOpenFormModal as a prop
+export default function Navbar({ onOpenFormModal }) {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50 w-full">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -27,6 +29,8 @@ export default function Navbar() {
             className="h-8 w-auto object-contain" // Added object-contain for better fitting
           />
           <button
+            // Add the onClick handler here to call the prop function
+            onClick={onOpenFormModal}
             className="
               px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap
               bg-gradient-to-r from-purple-700 to-blue-600 text-white

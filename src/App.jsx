@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
+import React, { useState } from "react";
 
 // ✅ FIXED IMPORTS — make sure these match your file names exactly!
+import FormModal from './components/RegisterrModal'; // Import your new FormModal component
+
 import Navbar from './components/navbar';
 import Landing from './section/Landing';
 import SponsorList from './components/sponser'; 
@@ -15,6 +18,15 @@ import FeatureSection from './components/download';
 import Testimonials from './components/Testimonial';
 
 function App() {
+    const [showFormModal, setShowFormModal] = useState(false);
+
+  const openModal = () => {
+    setShowFormModal(true);
+  };
+
+  const closeModal = () => {
+    setShowFormModal(false);
+  };
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
@@ -36,7 +48,10 @@ function App() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar onOpenFormModal={openModal} />
+
+      {/* Render the FormModal, controlled by showFormModal state */}
+      <FormModal isOpen={showFormModal} onClose={closeModal} />
       <Landing />
       <SponsorList />
       <DemoPage />
